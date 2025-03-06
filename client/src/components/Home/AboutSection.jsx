@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function AboutSection() {
   return (
@@ -54,7 +55,7 @@ function AboutSection() {
               </div>
             </div>
             {/* Read More Button */}
-            <button
+            <Link to="/About"
               className="sm:w-fit w-full group px-3.5 py-2 bg-[#E3007E] hover:bg-[#C9006E] rounded-lg shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] transition-all duration-700 ease-in-out justify-center items-center flex">
               <span
                 className="px-1.5 text-white text-sm font-medium leading-6 group-hover:-translate-x-0.5 transition-all duration-700 ease-in-out">
@@ -65,7 +66,7 @@ function AboutSection() {
                 <path d="M6.75265 4.49658L11.2528 8.99677L6.75 13.4996" stroke="white" stroke-width="1.6"
                   stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-            </button>
+            </Link>
           </div>
 
           {/* Right Column: Image */}

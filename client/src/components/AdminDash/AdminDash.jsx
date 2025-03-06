@@ -19,7 +19,7 @@ export default function AdminDash() {
       <div className="flex bg-gray-50 min-h-screen relative">
         {/* Mobile Sidebar Toggle */}
         <button
-          className="sm:hidden fixed bottom-4 right-4 z-50 p-3 bg-[#662480] text-white rounded-full shadow-lg"
+          className="sm:hidden fixed bottom-4 right-4 z-50 p-3 bg-[#E3007E] text-white rounded-full shadow-lg"
           onClick={toggleSidebar}
         >
           <FaBars className="w-5 h-5" />

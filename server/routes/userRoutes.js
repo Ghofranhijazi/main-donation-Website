@@ -7,10 +7,8 @@ const { getUserProfile, updateUserProfile } = require("../controller/userControl
 
 const router = express.Router();
 
-// المسار للحصول على بيانات المستخدم
 router.get("/profile/:userId", getUserProfile);
 
-// المسار لتحديث بيانات المستخدم
 router.put("/profile/:userId", updateUserProfile);
 
  router.post("/contact", saveContactMessage);

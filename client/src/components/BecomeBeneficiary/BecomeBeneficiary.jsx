@@ -153,15 +153,36 @@ export default function BecomeBeneficiary() {
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
-                            <div>
-                                <label className="block mb-1 font-semibol flex " style={{  color:'#662480' }}>رقم الهاتف:</label>
-                                <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full p-3 border border-gray-400 rounded-md bg-white focus:ring-2 focus:ring-purple-500" required readOnly={!!savedData.phone}/>
-                            </div>
-                            <div>
-                                <label className="block mb-1 font-semibold flex " style={{  color:'#662480' }}>البريد الإلكتروني:</label>
-                                <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full p-3 border border-gray-400 rounded-md bg-white focus:ring-2 focus:ring-purple-500" required readOnly={!!savedData.email}/>
-                            </div>
-                        </div>
+    <div>
+        <label className="block mb-1 font-semibol flex" style={{ color: '#662480' }}>رقم الهاتف:</label>
+        <input 
+    type="tel" 
+    name="phone" 
+    value={formData.phone} 
+    onChange={handleChange} 
+    className="w-full p-3 border border-gray-400 rounded-md bg-white focus:ring-2 focus:ring-purple-500" 
+    required 
+    readOnly={!!savedData.phone} 
+    pattern="^07\d{8}$" 
+    title="أدخل رقم هاتف صحيح يبدأ بـ 07 ويحتوي على 10 أرقام (مثل: 0791234567)"
+/>
+    </div>
+    <div>
+        <label className="block mb-1 font-semibold flex" style={{ color: '#662480' }}>البريد الإلكتروني:</label>
+        <input 
+            type="email" 
+            name="email" 
+            value={formData.email} 
+            onChange={handleChange} 
+            className="w-full p-3 border border-gray-400 rounded-md bg-white focus:ring-2 focus:ring-purple-500" 
+            required 
+            readOnly={!!savedData.email} 
+            pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$" 
+            title="أدخل بريد إلكتروني صحيح (مثل: example@email.com)"
+        />
+    </div>
+</div>
+
 
                         <div>
                                 <label className="block mb-1 font-semibold flex " style={{  color:'#662480' }}> تفاصيل الطلب:</label>

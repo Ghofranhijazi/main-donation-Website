@@ -39,7 +39,7 @@ export default function DonationDetails() {
         <>
             <div className="bg-white min-h-screen" style={{ fontFamily: "'IBM Plex Sans Arabic', sans-serif" }}>
                 <header className="bg-[#662480] text-white py-6 text-center">
-                    <h1 className="text-3xl font-bold">تفاصيل الحملة</h1>
+                    <h1 className="text-3xl font-bold">تفاصيل التبرع</h1>
                 </header>
 
                 <div className="container mx-auto px-4 py-8">
@@ -57,7 +57,7 @@ export default function DonationDetails() {
                         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
                             <div className="flex-1">
                                 <h2 className="text-2xl font-bold text-[#E3007E] mb-4">
-                                    عنوان الحملة: {request.toolName}
+                                    {request.toolName}
                                 </h2>
                                 <p className="text-gray-700">
                                     {request.description}
@@ -65,15 +65,24 @@ export default function DonationDetails() {
                             </div>
 
                             <div className="mb-8">
-          <button  onClick={() => handleDetailsClick(request.id)} className="bg-[#E3007E] rounded-tl-[18px]  rounded-br-[18px] text-white px-6 py-3 rounded-lg hover:bg-[#C9006E] transition-colors duration-200 flex items-center justify-center space-x-2">
-            <FaHeart className="text-white" /> {/* Heart Icon */}
+    {request.amount_raised >= request.estimatedCost ? (
+        <span className="text-green-600 font-bold text-lg">
+            تم جمع مبلغ التبرع
+        </span>
+    ) : (
+        <button 
+            onClick={() => handleDetailsClick(request.id)} 
+            className="bg-[#E3007E] rounded-tl-[18px] rounded-br-[18px] text-white px-6 py-3 rounded-lg hover:bg-[#C9006E] transition-colors duration-200 flex items-center justify-center space-x-2"
+        >
+            <FaHeart className="text-white" />
             <span>تبرع الآن</span>
-          </button>
-        </div>
+        </button>
+    )}
+</div>
                         </div>
 
                         <div className="mb-8 bg-gray-100 p-6 rounded-lg shadow-sm">
-                            <h3 className="text-xl font-bold text-[#662480] mb-4">تقدم الحملة</h3>
+                            <h3 className="text-xl font-bold text-[#662480] mb-4">تقدم التبرع</h3>
                             <div className="w-full bg-gray-200 rounded-full h-4 mb-4">
                                 <div
                                     className="bg-[#E3007E] h-4 rounded-full"
@@ -81,8 +90,8 @@ export default function DonationDetails() {
                                 ></div>
                             </div>
                             <div className="flex justify-between text-gray-700">
-                                <p>المبلغ المطلوب: {request.estimatedCost} ريال</p>
-                                <p>المبلغ المجموع: {request.amount_raised} ريال</p>
+                                <p>المبلغ المطلوب: {request.estimatedCost} دينار اردني</p>
+                                <p>المبلغ المجموع: {request.amount_raised} دينار اردني</p>
                             </div>
                         </div>
 

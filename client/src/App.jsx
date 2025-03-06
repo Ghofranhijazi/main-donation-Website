@@ -31,11 +31,6 @@ function App() {
           path: "/BecomeBeneficiary",
           element: <BecomeBeneficiary />
         },
-        
-        {
-          path: "/AdminDash/*",
-          element: <AdminDash />
-        },
         {
           path: "/Donations",
           element: <Donations />
@@ -70,6 +65,10 @@ function App() {
     {
       path: '/register',
       element: <Register />
+    },
+    {
+      path: "/AdminDash/*",
+      element: <AdminDash />
     }
   ]);
 

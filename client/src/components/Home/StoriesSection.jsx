@@ -16,7 +16,7 @@ function StoriesSection() {
             <p className="text-gray-700 mb-4">
               "وكانت منصة أفق بمثابة شعاع النور في وقت مليء بالتحديات. عندما قدمت طلبًا للمساعدة لتوفير كرسي متحرك جديد، بفضل تبرعاتكم، استطعت توفير العلاج الذي غير حياتي. شكراً لمنصة أفق على دعمها!"
             </p>
-            <h4 className="text-primary font-semibold">- أحمد من سوريا</h4>
+            <h4 className="text-primary font-semibold">- أحمد من عمان</h4>
             <p className="text-gray-500 text-sm mt-4">Dec 24, 2023</p>
           </div>
 
@@ -29,13 +29,13 @@ function StoriesSection() {
               <source src="https://videos.pexels.com/video-files/6191169/6191169-uhd_1440_2732_25fps.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
-            <p className="text-gray-700 mt-2">قصة نجاح - سارة من العراق</p>
+            <p className="text-gray-700 mt-2">قصة نجاح - سارة من اربد</p>
           </div>
 
           {/* Text Review 2 */}
           <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition ">
             <p className="text-gray-700 mb-10">“لم أكن أتخيل أبدًا أنني سأحصل على المساعدة التي أحتاجها بهذه السرعة والشفافية. كانت منصة أفق بوابتي للأمل، حيث تمكّنت من تأمين جهاز طبي ضروري لابنتي. ”</p>
-            <h4 className="text-primary font-semibold">- سامر من سوريا</h4>
+            <h4 className="text-primary font-semibold">- سامر من الزرقاء</h4>
             <p className="text-gray-500 text-sm mt-4">Dec 24, 2023</p>
           </div>
 
@@ -48,7 +48,7 @@ function StoriesSection() {
               <source src="https://videos.pexels.com/video-files/6191451/6191451-sd_960_506_25fps.mp4" type="video/mp4" />
               متصفحك لا يدعم تشغيل الفيديو.
             </video>
-            <p className="text-gray-700 mt-2">قصة نجاح - محمد من الأردن</p>
+            <p className="text-gray-700 mt-2">قصة نجاح - مريم من عمان</p>
           </div>
         </div>
       </div>

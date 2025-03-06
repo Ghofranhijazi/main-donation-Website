@@ -1,5 +1,5 @@
 import React from "react";
-import { FaBars, FaSearch, FaBell } from "react-icons/fa";
+import { FaBars, FaBell } from "react-icons/fa";
 
 export default function Header({ toggleSidebar }) {
   return (
@@ -7,21 +7,12 @@ export default function Header({ toggleSidebar }) {
       <div className="flex items-center w-full max-w-xl">
         {/* Hamburger (mobile only) */}
         <button
-          className="sm:hidden ml-2 text-[#662480]"
+          className="sm:hidden ml-2 text-[#E3007E]"
           onClick={toggleSidebar}
           aria-label="فتح القائمة الجانبية"
         >
           <FaBars className="w-5 h-5" />
         </button>
-        
-        <div className="relative w-full">
-          <FaSearch className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
-          <input
-            type="text"
-            className="w-full pr-10 pl-4 py-2 bg-gray-50 rounded-lg border border-gray-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all text-sm sm:text-base"
-            placeholder="بحث..."
-          />
-        </div>
       </div>
       <div className="flex items-center space-x-3 sm:space-x-5 mr-2">
         <button className="relative text-gray-500 hover:text-indigo-600">

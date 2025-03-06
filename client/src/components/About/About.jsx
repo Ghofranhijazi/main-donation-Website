@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import Footer from '../Footer/Footer';
 
 const AboutUs = () => {
   const userId = useSelector((state) => state.user.id);
@@ -548,7 +549,7 @@ const AboutUs = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/donate"
+              href="/Donations"
               className="px-8 py-3 bg-white text-[#E3007E] font-bold rounded-lg hover:bg-gray-100 transition duration-300"
             >
               تبرع الآن
@@ -562,6 +563,7 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

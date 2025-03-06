@@ -728,6 +728,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import Footer from '../Footer/Footer';
 
 const UserProfile = () => {
   const userId = useSelector((state) => state.user.id);
@@ -831,6 +832,7 @@ const UserProfile = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

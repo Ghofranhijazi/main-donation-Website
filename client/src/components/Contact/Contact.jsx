@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import Footer from '../Footer/Footer';
 
 // ✅ استخدم API Key الصحيح هنا
 const genAI = new GoogleGenerativeAI("AIzaSyAOqUTs0LtSzF7vfO7M3u7qDUFPKq39Bng");
@@ -444,6 +445,7 @@ const Contact = () => {
           </form>
         </div>
       )}
+      <Footer/>
     </div>
   );
 };

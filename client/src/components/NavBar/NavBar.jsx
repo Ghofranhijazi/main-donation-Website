@@ -21,25 +21,23 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
+   
     useEffect(() => {
       if (user.id) {
         fetchUserData();
       }
-    }, );
+    },[] );
 
   const fetchUserData = async () => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-  
+    console.log(user.id)
     try {
-      const response = await axios.get(`http://localhost:5000/api/users/profile/${user.id}`, { signal });
+      const response = await axios.get(`http://localhost:5000/api/users/profile/${user.id}`);
+      
+      console.log("User Data:", response.data.name);
   
-      console.log("User Data:", response.data);
-  
-      if (response.data.user) {
-        setUsername( response.data.user.name);
-      }
+     
+        setUsername( response.data.name);
+    
     } catch (err) {
       if (err.name !== "AbortError") {
         console.error(err);
@@ -47,10 +45,16 @@ const Navbar = () => {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+    await axios.post("http://localhost:5000/auth/logout", {}, { withCredentials: true });
+
     dispatch(clearUser()); // Clear user from Redux store
     setIsProfileOpen(false); // Close the dropdown
     navigate("/");
+    } catch (error){
+        console.error ('Error logging out' , error)
+    }
   };
 
   const getLinkClass = (path) => {
@@ -82,11 +86,12 @@ const Navbar = () => {
               <img src={logo} className="h-20 w-40" alt="Logo" />
             </Link>
 
-            {/* Profile Dropdown or Login Button */}
-            <div className="ml-20 relative">
+
+             {/* Profile Dropdown or Login Button */}
+             <div className=" ml-20 relative">
               {user.id ? (
                 // Profile Dropdown 
-                <div className="relative">
+                <div className="relative hidden md:block">
                 <button
                   onClick={() => setIsProfileOpen(!isProfileOpen)}
                   className="flex items-center space-x-2 bg-gray-50 px-4 py-2 rounded-full transition-colors duration-200 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#E3007E] focus:ring-opacity-50"
@@ -112,12 +117,7 @@ const Navbar = () => {
                         >
                           الملف الشخصي
                         </Link>
-                        <Link
-                          to="/Profile"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-150"
-                        >
-                          سجل معلوماتي
-                        </Link>
+                        
                         <button
                           onClick={handleLogout}
                           className="w-full text-right px-4 py-2 text-sm text-red-600 hover:bg-gray-50 transition-colors duration-150"
@@ -151,6 +151,8 @@ const Navbar = () => {
                 </Link>
               ))}
             </div>
+
+           
 
             {/* Mobile Menu Button */}
             <button
@@ -196,7 +198,73 @@ const Navbar = () => {
                   >
                     {link.label}
                   </Link>
+                  
                 ))}
+
+                 {/* Profile Dropdown or Login Button */}
+            <div className="ml-20 relative">
+              {user.id ? (
+                // Profile Dropdown 
+                <div className="relative">
+                <button
+                  onClick={() => setIsProfileOpen(!isProfileOpen)}
+                  className="flex items-center space-x-2 bg-gray-50 px-4 py-2 rounded-full transition-colors duration-200 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#E3007E] focus:ring-opacity-50"
+                >
+                  <UserCircle className="w-5 h-5 text-[#E3007E]" />
+                  <span className="text-sm font-medium text-gray-700">
+                    {username}
+                  </span>
+                  <ChevronDown
+                    className={`w-4 h-4 text-gray-500 transition-transform duration-200 ${
+                        isProfileOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                  {/* Dropdown Menu with Animation */}
+                  {isProfileOpen && (
+                    <div className="absolute right-0 left-10 mt-2 w-40 bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 transform opacity-100 scale-100 transition-all duration-200 origin-top-right">
+                      <div className="py-1">
+                        <Link
+                          to="/Profile"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors duration-150"
+                        >
+                          الملف الشخصي
+                        </Link>
+                        
+                        <button
+                          onClick={handleLogout}
+                          className="w-full text-right px-4 py-2 text-sm text-red-600 hover:bg-gray-50 transition-colors duration-150"
+                        >
+                          تسجيل الخروج
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                // Login Button
+                <Link
+                  to="/login"
+                  className="rounded-tl-[18px] rounded-tr-[0px] rounded-br-[18px] rounded-bl-[18px] bg-[#E3007E] text-white px-4 py-2 rounded-md hover:bg-[#C9006E] transition-colors duration-200"
+                >
+                  تسجيل الدخول
+                </Link>
+              )}
+            </div>
+
+            {/* Desktop Menu - Centered */}
+            <div className="hidden md:flex md:items-center md:space-x-4 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className={getLinkClass(link.to)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
               </div>
             </div>
           )}
